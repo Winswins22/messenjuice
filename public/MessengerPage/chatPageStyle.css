@@ -1,0 +1,146 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../images/background.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    padding: 300px 0px;
+    overflow-y: hidden;
+}
+
+.peopleList{
+    padding: 20px;
+    height: 100%;
+    width: 15%;
+    background: #000;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.person{
+    background: rgb(40, 40, 40);
+    border-radius: 20px;
+    padding: 5% 5% 10% 10%;
+    cursor:pointer;
+    margin:3%;
+}
+
+.picture{
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 20%;
+}
+
+.name{
+    word-wrap: hidden;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    display: inline-block;
+    color: #FFF;
+    cursor: pointer;
+    margin-top: 1%;
+}
+
+.messageSection{
+    padding: 20px;
+    height: 100%;
+    width: 76%;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+.sendMessageSection{
+    bottom: 2%;
+    right: 2%;
+    width: 91%;
+    position: absolute;
+}
+
+input{
+    bottom: 0;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+input[type = "text"]{
+    background: #fff;
+    width: 85%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 0 25px;
+    border-radius: 25px 0 0 25px;
+    margin-bottom: 5%;
+}
+
+input[type = "submit"]{
+    position: relative;
+    left: -5px;
+    border-radius: 0 25px 25px 0;
+    width: 10%;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+
+}
+
+input[type = "submit"]:hover{
+    background: #ff5722;
+}
+.currentPersonName{
+    color: #000;
+    font-size: 50px;
+    position: relative;
+    left: 39%;
+    margin: 20px;
+}
+
+.myMessage{
+    background: #96afc0;
+    position: relative;
+    font-size: 20px;
+    color: #000;
+    left: 0%;
+    width: 40%;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.timeLeft{
+    color: rgb(85, 85, 85);
+    position: relative;
+    font-size: 10px;
+    left: 1%;
+    width: 40%;
+}
+
+.theirMessage{
+    background: #96afc0;
+    position: relative;
+    text-align: right;
+    font-size: 20px;
+    color: #000;
+    left: 50%;
+    width: 40%;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.timeRight{
+    text-align: right;
+    color: rgb(85, 85, 85);
+    position: relative;
+    font-size: 10px;
+    left: 50%;
+    width: 40%;
+}
