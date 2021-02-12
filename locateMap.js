@@ -6,10 +6,9 @@ let data = {
 // Gets the location, then calls createMap()
 function getLocation (){
 
-    /* geolocation is available */
     navigator.geolocation.getCurrentPosition((position) => {
         
-        console.log("Inside geolocator!");
+        //console.log("Inside geolocator!");
 
         let lat;
         let long;
@@ -17,8 +16,8 @@ function getLocation (){
         lat = position.coords.latitude;
         long = position.coords.longitude;
 
-        console.log (lat);
-        console.log (long);
+        //console.log (lat);
+        //console.log (long);
 
         data = {
             lat: lat,
@@ -41,6 +40,9 @@ function createMap(){
 
     const tiles = L.tileLayer(tileUrl, { attribution });
     tiles.addTo(mymap);
+
+    // Add marker at current location
+    L.marker([data.lat, data.long]).addTo(mymap);
 
 }
 
