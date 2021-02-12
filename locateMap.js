@@ -1,12 +1,18 @@
-let lat;
-let long;
+// Spaghetti warning
 
+let data = {
+}
+
+// Gets the location, then calls createMap()
 function getLocation (){
-    
-    if('geolocation' in navigator) {
 
     /* geolocation is available */
     navigator.geolocation.getCurrentPosition((position) => {
+        
+        console.log("Inside geolocator!");
+
+        let lat;
+        let long;
 
         lat = position.coords.latitude;
         long = position.coords.longitude;
@@ -14,21 +20,21 @@ function getLocation (){
         console.log (lat);
         console.log (long);
 
-    });
+        data = {
+            lat: lat,
+            long: long
+        };
 
-  } else {
-    /* geolocation IS NOT available */
-  }
+        createMap()
+
+    });
   
 }
 
+// creates the map after getLocation() gets location data
 function createMap(){
 
-    // Change when ready
-    // lat == 51.505
-    // long == -0.09
-    // zoom_level == 13
-    let mymap = L.map('map').setView([51.505, -0.09], 13);
+    let mymap = L.map('map').setView([data.lat, data.long], 13);
 
     const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright"> OpenStreetMap</a> contributors';
     const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -39,4 +45,3 @@ function createMap(){
 }
 
 getLocation();
-createMap();
