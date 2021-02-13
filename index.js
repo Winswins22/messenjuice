@@ -2,21 +2,20 @@ const { json } = require('body-parser');
 const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
+const fs = require('fs');
 const Datastore = require('nedb');
 
 // access database
 const db = new Datastore("db/users.db");
 // load data
 db.loadDatabase();
-
+    
 const app = express()
 
-// set the home page route
-app.get('/', function(req, res) {
-
-    // ejs render automatically looks in the views folder
-    res.render('public/MainBrowserSocialBrowsingPage/mainPage.html');
-});
+// route to home page
+app.get('/', function (req, res) {
+    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+ })
 
 app.listen(process.env.PORT || 3000, () => console.log('listening'));
 
