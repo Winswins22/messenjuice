@@ -4,8 +4,8 @@ html {
     padding: 0;
     /* background-color:pink; */
 
-    background: linear-gradient(90deg, #000000 0%, #303030 100%);
-        background-size: 100%;
+    background-color: rgb(26, 26, 26);
+    background-size: 100%;
 }
 
 li, a, button{
@@ -23,6 +23,8 @@ header {
     align-items: center;
     padding:30px 10px;
     height: 6%;
+    border-bottom: 1px solid #fff;
+
 }
 
 .logo{
@@ -79,6 +81,30 @@ header {
 }
 
 .feedElement:hover{
+    transition: all 0.2s ease 0s;
     background-color: rgb(40, 40, 40);
+}
 
+.feed{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(41, 41, 68);
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.createPost{
+    background-color: rgba(15, 15, 15, 0.333);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-family:"Montserrat",sans-serif;
+    font-size: 20px;
+}
+
+.createPost:hover{
+    transition: all 0.2s ease 0s;
+    background-color: rgb(40, 40, 40);
+    cursor: pointer;
 }
