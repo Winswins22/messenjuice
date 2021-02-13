@@ -2,8 +2,9 @@ const { json } = require('body-parser');
 const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
-const fs = require('fs');
 const Datastore = require('nedb');
+// use to sent email
+const nodemailer = require("nodemailer");
 
 // access database
 const db = new Datastore("db/users.db");
@@ -12,12 +13,7 @@ db.loadDatabase();
 
 const app = express()
 
-// route to home page
-app.get('/', function (req, res) {
-    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
- })
-
-app.listen(process.env.PORT || 3000, () => console.log('listening'));
+app.listen(3000, () => console.log('listening at 3000'));
 
 app.use(express.static('public'));
 app.use(express.json({limit:'10mb'}));
@@ -37,8 +33,8 @@ users = {
 }
 */
 
-// ---------------login INFO-------------------
-app.get('/loginINFO', (request, response) => {
+// get data info
+app.get('/getDataInfo', (request, response) => {
     db.find({}, (err, data) => {
         if (err) {
             response.end();
@@ -46,12 +42,11 @@ app.get('/loginINFO', (request, response) => {
         }
         console.log(data);
         response.json(data);
-    });
-});
+    })
+})
 
 // ---------------regitstration-------------------
 app.post('/regitstration', (request, response) => {
-    let _userID_ = db.__Nuser__;
     const username = request.body.username;
     const password = request.body.password;
     const email = request.body.email;
@@ -59,9 +54,7 @@ app.post('/regitstration', (request, response) => {
     let obj = {};
     
     let res = 1;
-
-    // I'm not sure if you need to pass in res here.
-    function register(data){
+    function register(){
         if (res){
             // user does not exist
             db.insert({
@@ -74,13 +67,13 @@ app.post('/regitstration', (request, response) => {
             console.log("registration completed successfully")
     
             // return status
-            obj = {status : "registration completed successfully",data:data};
+            obj = {status : "registration completed successfully"};
         }else{
             // user exists
             console.log("user already exists");
     
             // return status
-            obj = {status : "username/email already exists",data:data};
+            obj = {status : "username/email already exists"};
         }
     }
 
@@ -98,15 +91,46 @@ app.post('/regitstration', (request, response) => {
             res = 1;
         }
         for (user of data) {
-            console.log(user.user.username,user.user.password,user.user.email);
+            console.log("nani",user.user.username,user.user.password,user.user.email);
             if (user.user.username === username || user.user.email === email){
                 // user already exists
                 res = 0;
             }
         }
-        // I'm not sure if you need to pass in res here.
         register(data);
-        console.log(obj);
         response.json(obj);
     })
-});
+})
+
+
+// ---------------Forgot Password-------------------
+app.post("/send-email",(req,res) => {
+    const email = req.body.email;
+
+    function sentEmail(email){
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth:{
+                user: "messenjuice@gmail.com",
+                pass: "hackathon1234"
+            }
+        });
+
+        var mailOptions = {
+            from: "messenjuice@gmail.com",
+            to: email,
+            suject: "testing sending email",
+            text:"testing"
+        };
+
+        transporter.sendMail(mailOptions,(err, info)=>{
+            if(err) {
+                console.log(err);
+            }else{
+                console.log("email sent: ", info.response);
+            }
+        });
+    }
+
+    sentEmail(email);
+})
