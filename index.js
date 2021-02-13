@@ -3,20 +3,30 @@ const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
 const Datastore = require('nedb');
-// use to sent email
+const dotenv = require('dotenv')
+const fs = require('fs');
 const nodemailer = require("nodemailer");
+
+//load dotenv
+dotenv.config()
 
 // access database
 const db = new Datastore("db/users.db");
 // load data
 db.loadDatabase();
 
+// load app
 const app = express()
-
-app.listen(3000, () => console.log('listening at 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('listening at port:',PORT));
 
 app.use(express.static('public'));
 app.use(express.json({limit:'10mb'}));
+
+// route to home page
+app.get('/', function (req, res) {
+    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+})
 
 /*
 // data structure
@@ -40,7 +50,6 @@ app.get('/getDataInfo', (request, response) => {
             response.end();
             return;
         }
-        console.log(data);
         response.json(data);
     })
 })
@@ -91,7 +100,6 @@ app.post('/regitstration', (request, response) => {
             res = 1;
         }
         for (user of data) {
-            console.log("nani",user.user.username,user.user.password,user.user.email);
             if (user.user.username === username || user.user.email === email){
                 // user already exists
                 res = 0;
@@ -108,29 +116,38 @@ app.post("/send-email",(req,res) => {
     const email = req.body.email;
 
     function sentEmail(email){
+        EMAIL = process.env.GMAIL;
+        PASSWORD = process.env.PASSWORD;
+        console.log(EMAIL,PASSWORD);
         var transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure:false,
+            reuireTLS:true,
             auth:{
-                user: "messenjuice@gmail.com",
-                pass: "hackathon1234"
+                user: EMAIL,
+                pass: PASSWORD
+
             }
         });
 
         var mailOptions = {
-            from: "messenjuice@gmail.com",
+            from: process.env.GMAIL,
             to: email,
             suject: "testing sending email",
             text:"testing"
         };
 
         transporter.sendMail(mailOptions,(err, info)=>{
+            console.log("error??");
             if(err) {
                 console.log(err);
+                console.log("nani");
             }else{
                 console.log("email sent: ", info.response);
             }
         });
     }
-
+    console.log("yes");
     sentEmail(email);
 })
