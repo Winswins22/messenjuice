@@ -1,7 +1,4 @@
-node_modules
-package-lock.json
-package.json
-.DS_store
-*.txt
-.env
-
+/node_modules
+npm-debug.log
+/.env
+.DS_Store

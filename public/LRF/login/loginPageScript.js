@@ -8,7 +8,6 @@ document.getElementById("button").addEventListener('click', async event=>{
     async function getData(){
         const response = await fetch('/getDataInfo');
         const json = await response.json();
-        console.log(json);
         return json;
     }
 
@@ -24,7 +23,6 @@ document.getElementById("button").addEventListener('click', async event=>{
             return;
         }
         for (user of json){
-            console.log("f");
             if ((username_email == user.user.username || username_email == user.user.email) && password == user.user.password){
                 // login success
                 console.log("login success");

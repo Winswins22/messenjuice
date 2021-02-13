@@ -40,7 +40,6 @@ app.get('/getDataInfo', (request, response) => {
             response.end();
             return;
         }
-        console.log(data);
         response.json(data);
     })
 })
@@ -91,7 +90,6 @@ app.post('/regitstration', (request, response) => {
             res = 1;
         }
         for (user of data) {
-            console.log("nani",user.user.username,user.user.password,user.user.email);
             if (user.user.username === username || user.user.email === email){
                 // user already exists
                 res = 0;
@@ -131,6 +129,5 @@ app.post("/send-email",(req,res) => {
             }
         });
     }
-
     sentEmail(email);
 })
