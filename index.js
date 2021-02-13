@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
@@ -15,44 +16,93 @@ app.listen(3000, () => console.log('listening at 3000'));
 app.use(express.static('public'));
 app.use(express.json({limit:'10mb'}));
 
-// app.get('/api', (request, response) => {
-//     db.find({}, (err, data) => {
-//       if (err) {
-//         response.end();
-//         return;
-//       }
-//       response.json(data);
-//     });
-// });
+/*
+// data structure
+using username and email as primary key
 
-app.post('/loginINFO',(request, response)=>{
-    let username = request.body.username;
-    let password = request.body.password;
-    let result = checkUser(username,password);
-    result = result == 0 ? "Username not in database" : "Username already in database";
-    response.json({
-        result:result
+users = {
+    __Nuser__:string
+
+    _userID_:{
+        username:string
+        password:string
+        email:string
+    }
+}
+*/
+
+// ---------------login INFO-------------------
+app.get('/loginINFO', (request, response) => {
+    db.find({}, (err, data) => {
+        if (err) {
+            response.end();
+            return;
+        }
+        console.log(data);
+        response.json(data);
     });
 });
 
-function checkUser(username, password){
-    // check if username in database
-    db.find({ 'username': username, 'password': password }, function(err, user) {
+// ---------------regitstration-------------------
+app.post('/regitstration', (request, response) => {
+    let _userID_ = db.__Nuser__;
+    const username = request.body.username;
+    const password = request.body.password;
+    const email = request.body.email;
+
+    let obj = {};
+    
+    let res = 1;
+
+    // I'm not sure if you need to pass in res here.
+    function register(){
+        if (res){
+            // user does not exist
+            db.insert({
+                user:{
+                    username:username,
+                    password:password,
+                    email:email,
+                }
+            })
+            console.log("registration completed successfully")
+    
+            // return status
+            obj = {status : "registration completed successfully"};
+        }else{
+            // user exists
+            console.log("user already exists");
+    
+            // return status
+            obj = {status : "username/email already exists"};
+        }
+        response.json(obj);
+        console.log(obj);
+    }
+    
+    db.find({}, (err, data) => {
         if (err) {
-            return 0;
+            response.end();
+            console.log("nani");
+            res = 0;
         }
-        //if user found.
-        if (user.length!=0) {
-            if(user[0].username && user[0].password) {
-                if (user[0].username == username && user[0].password == password){
-                    return 1;
-                }                         
-            }                                
-            var err = new Error();
-            err.status = 310;
-            return 0;
+        if(data == undefined) {
+            console.log("undefined");
+            res = 1;
+        };
+        if (Object.keys(data).length == 0){ 
+            console.log("len=0");
+            res = 1;
         }
-        return 0;
-    });
-    return 0;
-}
+        for (user of data) {
+            console.log(user.user.username,user.user.password,user.user.email);
+            if (user.user.username === username || user.user.email === email){
+                // user already exists
+                res = 0;
+            }
+        }
+        // I'm not sure if you need to pass in res here.
+        register();
+        console.log("why");
+    })
+});
