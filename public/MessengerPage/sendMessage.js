@@ -62,7 +62,7 @@ function getTime(){
 function createSentMessage (message){
 
     //console.log("Creating divs!");
-    console.log("Message: ", message);
+    // console.log("Message: ", message);
 
     // Create and get information for time
     timeDiv = document.createElement("div");
@@ -86,7 +86,7 @@ function createSentMessage (message){
 function createReceivedMessage(message){
 
     //console.log("Creating divs!");
-    console.log("Message: ", message);
+    // console.log("Message: ", message);
 
     // Create and get information for time
     timeDiv = document.createElement("div");
@@ -123,7 +123,7 @@ function sendWithClick(){
         console.log("Sending message via click: ", message_box.value);
 
         // Log + Send the time
-        console.log("Current Time:", getTime());
+        // console.log("Current Time:", getTime());
         
         // Reset the textbox's value
         message_box.value = "";
@@ -149,7 +149,7 @@ function sendWithEnter(character){
             console.log("Sending message via enter: ", message_box.value);
 
             // Log + Send the time
-            console.log("Current Time:", getTime());
+            // console.log("Current Time:", getTime());
             
             // Reset the textbox's value
             message_box.value = "";
