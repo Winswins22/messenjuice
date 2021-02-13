@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< Updated upstream
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+>>>>>>> Stashed changes
   },
   "repository": {
     "type": "git",
@@ -19,6 +24,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "nedb": "^1.8.0",
+    "nodemailer": "^6.4.18",
     "nodemon": "^2.0.7"
   }
 }

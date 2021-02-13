@@ -6,7 +6,7 @@ document.getElementById("button").addEventListener('click', async event=>{
 
     // request username and password
     async function getData(){
-        const response = await fetch('/loginINFO');
+        const response = await fetch('/getDataInfo');
         const json = await response.json();
         console.log(json);
         return json;
