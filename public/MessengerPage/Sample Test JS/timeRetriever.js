@@ -6,6 +6,9 @@ function formatTime(hours, minutes){
         AM_or_PM = "PM";
         hours = hours - 12;
     }
+    else if (hours == 12){
+        AM_or_PM = "PM";
+    }
     else{
         AM_or_PM = "AM";
     }
