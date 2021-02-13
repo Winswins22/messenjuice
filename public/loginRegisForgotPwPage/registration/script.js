@@ -29,9 +29,7 @@ document.getElementById("button").addEventListener('click', async event=>{
 
     // request username and password check and
     // request create account
-    console.log("gg");
     const response = await fetch('/regitstration', options);
-    console.log("hello");
     const json = await response.json();
     console.log(json);
 });
