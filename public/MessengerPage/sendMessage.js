@@ -62,7 +62,7 @@ function getTime(){
 function createSentMessage (message){
 
     //console.log("Creating divs!");
-    console.log("Message: ", message);
+    // console.log("Message: ", message);
 
     // Create and get information for time
     timeDiv = document.createElement("div");
@@ -72,13 +72,13 @@ function createSentMessage (message){
     messageDiv = document.createElement("div");
     messageDiv.innerHTML = message;
 
-    // Add time and message classes
-    timeDiv.classList.add("timeRight");
-    messageDiv.classList.add('theirMessage');
-
     // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
+
+    // Add time and message classes
+    timeDiv.classList.add("timeRight");
+    messageDiv.classList.add('theirMessage');
 
 }
 
@@ -86,7 +86,7 @@ function createSentMessage (message){
 function createReceivedMessage(message){
 
     //console.log("Creating divs!");
-    console.log("Message: ", message);
+    // console.log("Message: ", message);
 
     // Create and get information for time
     timeDiv = document.createElement("div");
@@ -96,13 +96,13 @@ function createReceivedMessage(message){
     messageDiv = document.createElement("div");
     messageDiv.innerHTML = message;
 
-    // Add time and message classes
-    timeDiv.classList.add("timeLeft");
-    messageDiv.classList.add('myMessage');
-
     // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
+
+    // Add time and message classes
+    timeDiv.classList.add("timeLeft");
+    messageDiv.classList.add('myMessage');
 
 }
 
@@ -123,7 +123,7 @@ function sendWithClick(){
         console.log("Sending message via click: ", message_box.value);
 
         // Log + Send the time
-        console.log("Current Time:", getTime());
+        // console.log("Current Time:", getTime());
         
         // Reset the textbox's value
         message_box.value = "";
@@ -149,7 +149,7 @@ function sendWithEnter(character){
             console.log("Sending message via enter: ", message_box.value);
 
             // Log + Send the time
-            console.log("Current Time:", getTime());
+            // console.log("Current Time:", getTime());
             
             // Reset the textbox's value
             message_box.value = "";
