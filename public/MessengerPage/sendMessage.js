@@ -1,8 +1,27 @@
+/////////////////////////////////////////////////////
+/*
+   Constants + Variables
+*/
+/////////////////////////////////////////////////////
+
 const send_button = document.getElementById("Send");
 const message_box = document.getElementById("Textbox");
 
-// Send when clicked
-send_button.addEventListener("click", function(){
+/////////////////////////////////////////////////////
+/*
+   Functions for creation of text boxes
+*/
+/////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+/*
+   Functions for sending messages
+*/
+/////////////////////////////////////////////////////
+
+// Checks if textbox is empty when "Send" button is clicked.
+// Sends the message after.
+function sendWithClick(){
 
     // Check if message is valid
     if (message_box.value != ""){
@@ -18,11 +37,11 @@ send_button.addEventListener("click", function(){
         console.log("Clicked send, but no input");
     }
 
+}
 
-});
-
-// Send when enter pressed
-message_box.addEventListener("keydown", function(character){
+// Checks if key pressed is "Enter" whenever something is typed into the textbox
+// After that, it checks if the textbox is empty before sending.
+function sendWithEnter(character){
 
     //checks whether the pressed key is "Enter"
     if (character.key == "Enter") {  
@@ -43,5 +62,18 @@ message_box.addEventListener("keydown", function(character){
 
     }
 
+}
 
-})
+
+
+/////////////////////////////////////////////////////
+/*
+   Listeners for activating functions
+*/
+/////////////////////////////////////////////////////
+
+// Send when clicked
+send_button.addEventListener("click", sendWithClick())
+
+// Send when enter pressed
+message_box.addEventListener("keydown", sendWithEnter(character));
