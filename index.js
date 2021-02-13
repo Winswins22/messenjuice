@@ -3,18 +3,22 @@ const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
 const Datastore = require('nedb');
+const dotenv = require('dotenv')
 const fs = require('fs');
-// use to sent email
 const nodemailer = require("nodemailer");
+
+//load dotenv
+dotenv.config()
 
 // access database
 const db = new Datastore("db/users.db");
 // load data
 db.loadDatabase();
 
+// load app
 const app = express()
-
-app.listen(process.env.PORT || 3000, () => console.log('listening at 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('listening at port:',PORT));
 
 app.use(express.static('public'));
 app.use(express.json({limit:'10mb'}));
@@ -112,28 +116,35 @@ app.post("/send-email",(req,res) => {
     const email = req.body.email;
 
     function sentEmail(email){
+        EMAIL = process.env.GMAIL;
+        PASSWORD = process.env.PASSWORD;
+        console.log(EMAIL,PASSWORD);
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth:{
-                user: process.env.GMAIL,
-                pass: process.env.PASSWORD
+                user: EMAIL,
+                pass: PASSWORD
+
             }
         });
 
         var mailOptions = {
-            from: "messenjuice@gmail.com",
+            from: process.env.GMAIL,
             to: email,
             suject: "testing sending email",
             text:"testing"
         };
 
         transporter.sendMail(mailOptions,(err, info)=>{
+            console.log("error??");
             if(err) {
                 console.log(err);
+                console.log("nani");
             }else{
                 console.log("email sent: ", info.response);
             }
         });
     }
+    console.log("yes");
     sentEmail(email);
 })
