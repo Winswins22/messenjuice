@@ -120,7 +120,10 @@ app.post("/send-email",(req,res) => {
         PASSWORD = process.env.PASSWORD;
         console.log(EMAIL,PASSWORD);
         var transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure:false,
+            reuireTLS:true,
             auth:{
                 user: EMAIL,
                 pass: PASSWORD
