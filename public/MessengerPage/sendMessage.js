@@ -7,13 +7,12 @@
 const send_button = document.getElementById("Send");
 const message_box = document.getElementById("Textbox");
 
-/////////////////////////////////////////////////////
-/*
-   Functions for creation of text boxes
-*/
-/////////////////////////////////////////////////////
+let message_area = document.getElementById("Messages");
 
+let tempMessage;
 
+let timeDiv;
+let messageDiv;
 
 /////////////////////////////////////////////////////
 /*
@@ -51,6 +50,44 @@ function getTime(){
 
     return currentTime;
     
+}
+
+/////////////////////////////////////////////////////
+/*
+   Functions for creation of text boxes
+*/
+/////////////////////////////////////////////////////
+
+// Creates CSS elements to simulate if you sent a message
+function createSentMessage (message){
+
+    console.log("Creating divs!");
+
+    timeDiv = document.createElement("div");
+    $('#timeDiv').addClass('timeLeft');
+
+    messageDiv = document.createElement("div");
+    $('#messageDiv').addClass('myMessage');
+
+    message_area.appendChild(messageDiv);
+    message_area.appendChild(timeDiv);
+
+}
+
+// Creates CSS elements to simulate if you recieved a messaged from someone else
+function createReceivedMessage(message){
+
+    console.log("Creating divs!");
+
+    timeDiv = document.createElement("div");
+    $('#timeDiv').addClass('timeRight');
+
+    messageDiv = document.createElement("div");
+    $('#messageDiv').addClass('theirMessage');
+
+    message_area.appendChild(messageDiv);
+    message_area.appendChild(timeDiv);
+
 }
 
 /////////////////////////////////////////////////////
@@ -111,7 +148,6 @@ function sendWithEnter(character){
 }
 
 
-
 /////////////////////////////////////////////////////
 /*
    Listeners for activating functions
@@ -119,7 +155,27 @@ function sendWithEnter(character){
 /////////////////////////////////////////////////////
 
 // Send when clicked
-send_button.addEventListener("click", sendWithClick())
+send_button.addEventListener("click", function(){
+
+    tempMessage = message_box.value;
+
+    sendWithClick();
+    createSentMessage(message_box.value);
+
+    console.log(message_area);
+
+});
 
 // Send when enter pressed
-message_box.addEventListener("keydown", sendWithEnter(character));
+message_box.addEventListener("keydown", function(character){
+
+    tempMessage = message_box.value;
+
+    sendWithEnter(character);
+
+    if (character.key == "Enter"){
+        createSentMessage(message_box.value);
+        console.log(message_area);
+    }
+
+});
