@@ -1,10 +1,13 @@
 // reset passwordbutton pressed
 document.getElementById("resetbutton").addEventListener('click', async event=>{
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
+    console.log(password,confirmPassword);
     if (password === confirmPassword){
         const data = {
+            email: email,
             password:password
         }
 
@@ -16,8 +19,15 @@ document.getElementById("resetbutton").addEventListener('click', async event=>{
             body: JSON.stringify(data)
         };
 
-        await fetch('/send-email', options);
-        return;
+        const response = await fetch('/resetPassword', options);
+        const json = await response.json();
+
+        if (json.status === 'success'){
+            console.log("password reset successful");
+
+        }else{
+            console.log("password reset failed");
+        }
     }else{
         console.log("password does not match");
     }
