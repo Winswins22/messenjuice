@@ -1,5 +1,5 @@
-// login button pressed
-document.getElementById("button").addEventListener('click', async event=>{
+// forgot password button pressed
+document.getElementById("fogotpass").addEventListener('click', async event=>{
     // get username and password
     const email = document.getElementById("email").value;
 

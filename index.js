@@ -25,7 +25,8 @@ app.use(express.json({limit:'10mb'}));
 
 // route to home page
 app.get('/', function (req, res) {
-    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+    res.sendFile(__dirname + "/" + "public/MainPageTemp/mainPage.html");
+    // fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
 })
 
 /*
@@ -149,4 +150,12 @@ app.post("/send-email",(req,res) => {
         });
     }
     sentEmail(email);
+})
+
+// ---------------reset password-------------------
+
+app.post("/resetPassword", (req, res)=>{
+    const password = req.body.password;
+    
+    
 })
