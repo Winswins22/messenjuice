@@ -15,7 +15,7 @@ const message_box = document.getElementById("Textbox");
 
 /////////////////////////////////////////////////////
 /*
-   Functions for retriving info
+   Functions for retrieving info
 */
 /////////////////////////////////////////////////////
 
@@ -66,6 +66,9 @@ function sendWithClick(){
 
         // Log + Send the message
         console.log("Sending message via click: ", message_box.value);
+
+        // Log + Send the time
+        console.log("Current Time:", getTime());
         
         // Reset the textbox's value
         message_box.value = "";
@@ -89,6 +92,9 @@ function sendWithEnter(character){
 
             // Log + Send the message
             console.log("Sending message via enter: ", message_box.value);
+
+            // Log + Send the time
+            console.log("Current Time:", getTime());
             
             // Reset the textbox's value
             message_box.value = "";
