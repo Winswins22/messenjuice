@@ -25,7 +25,7 @@ send_button.addEventListener("click", function(){
 message_box.addEventListener("keydown", function(character){
 
     //checks whether the pressed key is "Enter"
-    if (character.keyCode == 13) {  
+    if (character.key == "Enter") {  
 
         // Check if message is valid
         if (message_box.value != ""){
