@@ -61,13 +61,13 @@ function getTime(){
 // Creates CSS elements to simulate if you sent a message
 function createSentMessage (message){
 
-    console.log("Creating divs!");
+    //console.log("Creating divs!");
 
     timeDiv = document.createElement("div");
-    $('#timeDiv').addClass('timeLeft');
+    timeDiv.classList.add("timeLeft");
 
     messageDiv = document.createElement("div");
-    $('#messageDiv').addClass('myMessage');
+    messageDiv.classList.add('myMessage');
 
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
@@ -77,13 +77,13 @@ function createSentMessage (message){
 // Creates CSS elements to simulate if you recieved a messaged from someone else
 function createReceivedMessage(message){
 
-    console.log("Creating divs!");
+    //console.log("Creating divs!");
 
     timeDiv = document.createElement("div");
-    $('#timeDiv').addClass('timeRight');
+    timeDiv.classList.add("timeRight");
 
     messageDiv = document.createElement("div");
-    $('#messageDiv').addClass('theirMessage');
+    messageDiv.classList.add('theirMessage');
 
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
