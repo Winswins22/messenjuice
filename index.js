@@ -3,6 +3,7 @@ const { response } = require('express');
 const express = require('express');
 const { request } = require('http');
 const Datastore = require('nedb');
+const fs = require('fs');
 // use to sent email
 const nodemailer = require("nodemailer");
 
@@ -13,10 +14,15 @@ db.loadDatabase();
 
 const app = express()
 
-app.listen(3000, () => console.log('listening at 3000'));
+app.listen(process.env.PORT || 3000, () => console.log('listening at 3000'));
 
 app.use(express.static('public'));
 app.use(express.json({limit:'10mb'}));
+
+// route to home page
+app.get('/', function (req, res) {
+    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+})
 
 /*
 // data structure
@@ -109,8 +115,8 @@ app.post("/send-email",(req,res) => {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth:{
-                user: "messenjuice@gmail.com",
-                pass: "hackathon1234"
+                user: process.env.GMAIL,
+                pass: process.env.PASSWORD
             }
         });
 
