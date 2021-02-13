@@ -72,13 +72,13 @@ function createSentMessage (message){
     messageDiv = document.createElement("div");
     messageDiv.innerHTML = message;
 
-    // Add time and message classes
-    timeDiv.classList.add("timeRight");
-    messageDiv.classList.add('theirMessage');
-
     // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
+
+    // Add time and message classes
+    timeDiv.classList.add("timeRight");
+    messageDiv.classList.add('theirMessage');
 
 }
 
@@ -96,13 +96,13 @@ function createReceivedMessage(message){
     messageDiv = document.createElement("div");
     messageDiv.innerHTML = message;
 
-    // Add time and message classes
-    timeDiv.classList.add("timeLeft");
-    messageDiv.classList.add('myMessage');
-
     // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
+
+    // Add time and message classes
+    timeDiv.classList.add("timeLeft");
+    messageDiv.classList.add('myMessage');
 
 }
 
