@@ -1,1 +1,1 @@
-loginINFO
+const
