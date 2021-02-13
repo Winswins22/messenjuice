@@ -114,40 +114,39 @@ app.post('/regitstration', (request, response) => {
 // ---------------Forgot Password-------------------
 app.post("/send-email",(req,res) => {
     const email = req.body.email;
+    const path = req.body.path;
 
     function sentEmail(email){
         EMAIL = process.env.GMAIL;
         PASSWORD = process.env.PASSWORD;
         console.log(EMAIL,PASSWORD);
         var transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure:false,
-            reuireTLS:true,
+            service: "Gmail",
             auth:{
                 user: EMAIL,
                 pass: PASSWORD
 
             }
         });
-
+        console.log(path);
+        const dirPath = path + '/resetPassword.html';
         var mailOptions = {
-            from: process.env.GMAIL,
+            from: "messenjuice <no-reply@hackathon.com>",
             to: email,
-            suject: "testing sending email",
-            text:"testing"
+            suject: "Reset Password",
+            text:"test",
+            html: 
+            "<p>You have requested a password reset. Click this link to continue</p>" + 
+            "<a href =\" " + dirPath + " \">Reset Password</a>"
         };
 
         transporter.sendMail(mailOptions,(err, info)=>{
-            console.log("error??");
             if(err) {
                 console.log(err);
-                console.log("nani");
             }else{
                 console.log("email sent: ", info.response);
             }
         });
     }
-    console.log("yes");
     sentEmail(email);
 })

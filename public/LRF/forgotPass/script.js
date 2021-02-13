@@ -9,6 +9,7 @@ document.getElementById("button").addEventListener('click', async event=>{
         return json;
     }
 
+    const path = window.location.protocol + window.location.host + "/LRF/forgotPass";
     async function checkEmail(json){
         if (Object.keys(json).length == 0){
             console.log("email does not exist! Please try again.");
@@ -19,6 +20,7 @@ document.getElementById("button").addEventListener('click', async event=>{
                 console.log("email found");
                 const data = {
                     email: email,
+                    path:path
                 }
                 const options = {
                     method: 'POST',
