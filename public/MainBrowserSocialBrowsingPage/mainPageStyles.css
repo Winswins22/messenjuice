@@ -1,0 +1,84 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* background-color:pink; */
+
+    background: linear-gradient(90deg, #000000 0%, #303030 100%);
+        background-size: 100%;
+}
+
+li, a, button{
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500;
+    font-size:16px;
+    color:white;
+    text-decoration: none;
+}
+
+header {
+    /* background-color: #fff; */
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding:30px 10px;
+    height: 6%;
+}
+
+.logo{
+    display: block;
+    margin-right: auto;
+    cursor:pointer;
+    width:5%;
+
+}
+
+.siteName{
+    position: absolute;
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500;
+    font-size:30px;
+    color: #fff;
+    left: 6%;
+}
+
+.navLink {
+    list-style: none;
+}
+
+.navLink li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.navLink li a{
+    transition: all 0.3s ease 0s;
+}
+
+.navLink li a:hover{
+    color:#0088a9;
+    cursor: pointer;
+}
+
+.feedList{
+    position: absolute;
+    left: 0%;
+    height: 80%;
+    width: 15%;
+    border-radius: 10px;
+
+}
+
+.feedElement{
+    width: 93%;
+    color: #fff;
+    font-family:"Montserrat",sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.feedElement:hover{
+    background-color: rgb(40, 40, 40);
+
+}
