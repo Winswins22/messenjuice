@@ -24,7 +24,7 @@ header {
     padding:30px 10px;
     height: 6%;
     border-bottom: 1px solid #fff;
-
+    position: relative;
 }
 
 .logo{
@@ -63,21 +63,28 @@ header {
 }
 
 .feedList{
-    position: absolute;
+    position: fixed;
     left: 0%;
     height: 80%;
     width: 15%;
     border-radius: 10px;
+    margin: 20px 0;
 
+}
+
+.picture{
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 10%;
+    margin: 8px;
 }
 
 .feedElement{
     width: 93%;
-    color: #fff;
-    font-family:"Montserrat",sans-serif;
-    font-size: 20px;
-    padding: 10px;
     border-radius: 10px;
+
 }
 
 .feedElement:hover{
@@ -85,7 +92,19 @@ header {
     background-color: rgb(40, 40, 40);
 }
 
+.feedElementText{
+    color: #fff;
+    font-family:"Montserrat",sans-serif;
+    font-size: 20px;
+    padding: 10px 0;
+
+    word-wrap: hidden;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .feed{
+    margin: 20px 0;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(41, 41, 68);
@@ -98,7 +117,7 @@ header {
     background-color: rgba(15, 15, 15, 0.333);
     padding: 20px;
     border-radius: 10px;
-    color: #fff;
+    color: rgb(100, 100, 100);
     font-family:"Montserrat",sans-serif;
     font-size: 20px;
 }
@@ -107,4 +126,55 @@ header {
     transition: all 0.2s ease 0s;
     background-color: rgb(40, 40, 40);
     cursor: pointer;
+}
+
+.event{
+    margin: 20px 0;
+    background-color: rgba(15, 15, 15, 0.333);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nameTime{
+    border-radius: 10px;
+    padding: 15px;
+    background-color: rgb(41, 41, 68);
+    width: 25%;
+}
+
+.posterName{
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+}
+.postedTime{
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+}
+
+.postTitle{
+    text-align: center;
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.postContent{
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+    padding: 5px 0;
+}
+
+.postPicture{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.donation{
+    margin: 20px 0;
+    background-color: rgb(25, 31, 24);
+    padding: 20px;
+    border-radius: 10px;
 }
