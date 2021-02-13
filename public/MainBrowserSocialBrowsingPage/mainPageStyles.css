@@ -90,7 +90,6 @@ header {
 .feedElement{
     width: 93%;
     border-radius: 10px;
-
 }
 
 .feedElement:hover{
@@ -121,11 +120,24 @@ header {
 
 .createPost{
     background-color: rgba(15, 15, 15, 0.333);
-    padding: 20px;
     border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.createPostIcon{
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 50px;
+    margin: 8px;
+}
+
+.createPostText{
     color: rgb(100, 100, 100);
     font-family:"Montserrat",sans-serif;
     font-size: 20px;
+    display: inline-block;
+    margin: 23px 0;
 }
 
 .createPost:hover{
@@ -141,16 +153,31 @@ header {
     border-radius: 10px;
 }
 
-.nameTime{
+.picNameTime{
     border-radius: 10px;
     padding: 15px;
     background-color: rgb(41, 41, 68);
     width: 25%;
 }
 
+.profilePicture{
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 60px;
+}
+
+.nameTime{
+    padding: 5px;
+    word-wrap: hidden;
+    display: inline-block;
+}
+
 .posterName{
     font-family:"Montserrat",sans-serif;
-    color: #fff;
+    color: rgb(74, 100, 247);
+    font-size: 25px;
 }
 .postedTime{
     font-family:"Montserrat",sans-serif;
