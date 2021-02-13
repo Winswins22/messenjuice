@@ -17,14 +17,20 @@ li, a, button{
 }
 
 header {
-    /* background-color: #fff; */
+    top: 0;
+    background-color: rgb(26, 26, 26);
     display:flex;
     justify-content: flex-end;
     align-items: center;
-    padding:30px 10px;
+    padding: 20px 10px;
     height: 6%;
+    width: 98%;
     border-bottom: 1px solid #fff;
-    position: relative;
+    position: fixed;
+}
+
+.blankSpaceForHeader{
+    height: 12%;
 }
 
 .logo{
