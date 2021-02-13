@@ -15,6 +15,44 @@ const message_box = document.getElementById("Textbox");
 
 /////////////////////////////////////////////////////
 /*
+   Functions for retriving info
+*/
+/////////////////////////////////////////////////////
+
+// Formats time into a readable format
+function formatTime(hours, minutes){
+
+    let AM_or_PM = "";
+
+    if (hours > 12){
+        AM_or_PM = "PM";
+        hours = hours - 12;
+    }
+    else if (hours == 12){
+        AM_or_PM = "PM";
+    }
+    else{
+        AM_or_PM = "AM";
+    }
+
+    let formattedTime = hours + ":" + minutes + AM_or_PM;
+
+    return formattedTime;
+
+}
+
+// Retrieves the time in an easy way
+function getTime(){
+
+    let currentDate = new Date();
+    let currentTime = formatTime(currentDate.getHours(),  + currentDate.getMinutes());
+
+    return currentTime;
+    
+}
+
+/////////////////////////////////////////////////////
+/*
    Functions for sending messages
 */
 /////////////////////////////////////////////////////
