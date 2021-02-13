@@ -62,13 +62,21 @@ function getTime(){
 function createSentMessage (message){
 
     //console.log("Creating divs!");
+    console.log("Message: ", message);
 
+    // Create and get information for time
     timeDiv = document.createElement("div");
-    timeDiv.classList.add("timeLeft");
+    timeDiv.innerHTML = getTime();
 
+    // Create and get information for message
     messageDiv = document.createElement("div");
-    messageDiv.classList.add('myMessage');
+    messageDiv.innerHTML = message;
 
+    // Add time and message classes
+    timeDiv.classList.add("timeRight");
+    messageDiv.classList.add('theirMessage');
+
+    // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
 
@@ -78,13 +86,21 @@ function createSentMessage (message){
 function createReceivedMessage(message){
 
     //console.log("Creating divs!");
+    console.log("Message: ", message);
 
+    // Create and get information for time
     timeDiv = document.createElement("div");
-    timeDiv.classList.add("timeRight");
+    timeDiv.innerHTML = getTime();
 
+    // Create and get information for message
     messageDiv = document.createElement("div");
-    messageDiv.classList.add('theirMessage');
+    messageDiv.innerHTML = message;
 
+    // Add time and message classes
+    timeDiv.classList.add("timeLeft");
+    messageDiv.classList.add('myMessage');
+
+    // Add time and message to the page
     message_area.appendChild(messageDiv);
     message_area.appendChild(timeDiv);
 
@@ -158,11 +174,12 @@ function sendWithEnter(character){
 send_button.addEventListener("click", function(){
 
     tempMessage = message_box.value;
+    //console.log(tempMessage)
 
     sendWithClick();
-    createSentMessage(message_box.value);
+    createSentMessage(tempMessage);
 
-    console.log(message_area);
+    //console.log(tempMessage);
 
 });
 
@@ -170,12 +187,13 @@ send_button.addEventListener("click", function(){
 message_box.addEventListener("keydown", function(character){
 
     tempMessage = message_box.value;
+    //console.log(tempMessage)
 
     sendWithEnter(character);
 
     if (character.key == "Enter"){
-        createSentMessage(message_box.value);
-        console.log(message_area);
+        createSentMessage(tempMessage);
+        //console.log(tempMessage);
     }
 
 });
