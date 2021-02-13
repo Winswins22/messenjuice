@@ -9,7 +9,7 @@ const Datastore = require('nedb');
 const db = new Datastore("db/users.db");
 // load data
 db.loadDatabase();
-    
+
 const app = express()
 
 // route to home page
@@ -61,7 +61,7 @@ app.post('/regitstration', (request, response) => {
     let res = 1;
 
     // I'm not sure if you need to pass in res here.
-    function register(){
+    function register(data){
         if (res){
             // user does not exist
             db.insert({
@@ -74,13 +74,13 @@ app.post('/regitstration', (request, response) => {
             console.log("registration completed successfully")
     
             // return status
-            obj = {status : "registration completed successfully"};
+            obj = {status : "registration completed successfully",data:data};
         }else{
             // user exists
             console.log("user already exists");
     
             // return status
-            obj = {status : "username/email already exists"};
+            obj = {status : "username/email already exists",data:data};
         }
     }
 
@@ -98,14 +98,15 @@ app.post('/regitstration', (request, response) => {
             res = 1;
         }
         for (user of data) {
-            console.log("nani",user.user.username,user.user.password,user.user.email);
+            console.log(user.user.username,user.user.password,user.user.email);
             if (user.user.username === username || user.user.email === email){
                 // user already exists
                 res = 0;
             }
         }
         // I'm not sure if you need to pass in res here.
-        register();
+        register(data);
+        console.log(obj);
         response.json(obj);
     })
 });

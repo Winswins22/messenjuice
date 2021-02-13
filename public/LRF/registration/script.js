@@ -26,6 +26,7 @@ document.getElementById("button").addEventListener('click', async event=>{
         // request create account
         const response = await fetch('/regitstration', options);
         const json = await response.json();
+        console.log(json);
     }else{
         console.log("password is invalid");
     }
