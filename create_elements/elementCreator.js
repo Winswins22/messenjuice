@@ -1,31 +1,51 @@
-let newElem = document.createElement("input");
+let button = document.getElementById("CreateElement");
+let newElem;
+let elementsList = [];
 
-document.body.appendChild(newElem);
-newElem.placeholder = "Wow, hello!";
+// Create new element when button is pressed
+button.addEventListener("click", function(){
 
-console.dir(newElem);
+    newElem = document.createElement("input");
+
+    document.body.appendChild(newElem);
+    newElem.placeholder = "Wow, hello!";
+
+    init(newElem);
+
+    elementsList.push(newElem);
+
+    // Log element properties
+    //console.dir(newElem);
+
+    // Log list
+    // console.log(elementsList);
+
+});
+
 
 // Send when enter pressed
-newElem.addEventListener("keydown", function(character){
+function init(newElement){
 
-    //checks whether the pressed key is "Enter"
-    if (character.key == "Enter") {  
+    newElement.addEventListener("keydown", function(character){
 
-        // Check if message is valid
-        if (newElem.value != ""){
-
-            // Log + Send the message
-            console.log("Sending message via enter: ", newElem.value);
-            
-            // Reset the textbox's value
-            newElem.value = "";
-
+        //checks whether the pressed key is "Enter"
+        if (character.key == "Enter") {  
+    
+            // Check if message is valid
+            if (newElement.value != ""){
+    
+                // Log + Send the message
+                console.log("Sending message via enter: ", newElement.value);
+                
+                // Reset the textbox's value
+                newElement.value = "";
+    
+            }
+            else{
+                console.log("Enter pressed, but no input");
+            }
+    
         }
-        else{
-            console.log("Enter pressed, but no input");
-        }
-
-    }
-
-
-})
+    
+    })
+}
