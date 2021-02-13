@@ -1,11 +1,11 @@
 // login button pressed
 document.getElementById("button").addEventListener('click', async event=>{
     // get username and password
-    let username = document.getElementById("username").value;
+    let username_email = document.getElementById("username_email").value;
     let password = document.getElementById("password").value;
 
-    let data = {username,password};
-    console.log(username,password);
+    let data = {username_email,password};
+    console.log(username_email,password);
     const options = {
         method: 'POST',
         headers: {
@@ -13,15 +13,8 @@ document.getElementById("button").addEventListener('click', async event=>{
         },
         body: JSON.stringify(data)
     };
-    // request username and password check
-    const response = await fetch('/loginINFO', options);
-    const json = await response.json();
-    // console.log result
-    console.log(json);
-    const username_email = document.getElementById("username_email").value;
-    const password = document.getElementById("password").value;
 
-    // request username and password
+    // request data
     async function getData(){
         const response = await fetch('/getDataInfo');
         const json = await response.json();
@@ -33,14 +26,16 @@ document.getElementById("button").addEventListener('click', async event=>{
         checkloginInfo(json);
     })
 
+    // check username and password
     function checkloginInfo(json){
         console.log(json);
         if (Object.keys(json).length == 0){
             console.log("Username or password is incorrect! Please try again.");
             return;
         }
+
         for (user of json){
-            if ((username_email == user.user.username || username_email == user.user.email) && password == user.user.password){
+            if ((username_email === user.username || username_email === user.email) && password === user.password){
                 // login success
                 console.log("login success");
                 return;

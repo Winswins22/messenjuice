@@ -25,21 +25,18 @@ app.use(express.json({limit:'10mb'}));
 
 // route to home page
 app.get('/', function (req, res) {
-    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+    res.sendFile(__dirname + "/" + "public/MainPageTemp/mainPage.html");
+    // fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
 })
 
 /*
 // data structure
 using username and email as primary key
 
-users = {
-    __Nuser__:string
-
-    _userID_:{
-        username:string
-        password:string
-        email:string
-    }
+{
+    username:string
+    password:string
+    email:string
 }
 */
 
@@ -67,22 +64,20 @@ app.post('/regitstration', (request, response) => {
         if (res){
             // user does not exist
             db.insert({
-                user:{
                     username:username,
                     password:password,
-                    email:email,
-                }
+                    email:email
             })
             console.log("registration completed successfully")
     
             // return status
-            obj = {status : "registration completed successfully"};
+            obj = {status:"success"};
         }else{
             // user exists
             console.log("user already exists");
     
             // return status
-            obj = {status : "username/email already exists"};
+            obj = {status : "failed"};
         }
     }
 
@@ -100,26 +95,30 @@ app.post('/regitstration', (request, response) => {
             res = 1;
         }
         for (user of data) {
-            if (user.user.username === username || user.user.email === email){
+            if (user.username === username || user.email === email){
                 // user already exists
                 res = 0;
             }
         }
         register(data);
+        // sent obj back to the request
         response.json(obj);
     })
 })
 
 
 // ---------------Forgot Password-------------------
-app.post("/send-email",(req,res) => {
+app.post("/send-email",(req, res) => {
     const email = req.body.email;
     const path = req.body.path;
+    let obj = {}
 
     function sentEmail(email){
+        // get info from dotenv
         EMAIL = process.env.GMAIL;
         PASSWORD = process.env.PASSWORD;
-        console.log(EMAIL,PASSWORD);
+
+        // create transportation for sender
         var transporter = nodemailer.createTransport({
             service: "Gmail",
             auth:{
@@ -128,8 +127,11 @@ app.post("/send-email",(req,res) => {
 
             }
         });
-        console.log(path);
+
+        // create reset html path
         const dirPath = path + '/resetPassword.html';
+        
+        // email info
         var mailOptions = {
             from: "messenjuice <no-reply@hackathon.com>",
             to: email,
@@ -140,13 +142,46 @@ app.post("/send-email",(req,res) => {
             "<a href =\" " + dirPath + " \">Reset Password</a>"
         };
 
+        // send email
         transporter.sendMail(mailOptions,(err, info)=>{
             if(err) {
                 console.log(err);
+                obj = {status:"failed"};
             }else{
                 console.log("email sent: ", info.response);
+                obj = {status:"success"};
             }
         });
     }
     sentEmail(email);
+    res.json(obj);
 })
+
+// ---------------reset password-------------------
+
+app.post("/resetPassword", (req, res)=>{
+    const newPassword = req.body.password;
+    const email = req.body.email;
+    let returnValue = {}
+
+    // search data for username
+    async function update(){
+
+        // search data for email
+        await db.update( {email:email}, {$set: {password:newPassword}},{},(err,numReplace) =>{
+            if (err){
+                console.log(err);
+                returnValue = {status:"failed"};
+            }
+
+            console.log("password has been updated");
+            console.log("number of lines updated: ", numReplace);
+            
+            returnValue = {status:"success"};
+            res.json(returnValue);
+            return;
+        })
+        return;
+    }
+    update()
+})  

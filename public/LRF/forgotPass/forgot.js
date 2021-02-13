@@ -1,5 +1,5 @@
-// login button pressed
-document.getElementById("button").addEventListener('click', async event=>{
+// forgot password button pressed
+document.getElementById("fogotpass").addEventListener('click', async event=>{
     // get username and password
     const email = document.getElementById("email").value;
 
@@ -16,7 +16,7 @@ document.getElementById("button").addEventListener('click', async event=>{
             return;
         }
         for (user of json) {
-            if (user.user.email == email){
+            if (user.email == email){
                 console.log("email found");
                 const data = {
                     email: email,
@@ -30,12 +30,18 @@ document.getElementById("button").addEventListener('click', async event=>{
                     body: JSON.stringify(data)
                 };
 
-                await fetch('/send-email', options);
-                return;
+                const response = await fetch('/send-email', options);
+                const json = await response.json();
+                
+                if (json.status === 'success'){
+                    console.log("Email sent successful");
+        
+                }else{
+                    console.log("Email sent failed");
+                }
             }
         }
         console.log("email does not exist! Please try again.");
-        return;
     }
 
     getData().then(json=>{
