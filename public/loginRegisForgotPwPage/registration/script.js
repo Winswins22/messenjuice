@@ -1,22 +1,35 @@
-document.getElementById("button").addEventListener('click', async event =>{
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+// login button pressed
+document.getElementById("button").addEventListener('click', async event=>{
+    // get username and password
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const username = document.getElementById("username");
+    const confirmPassword = document.getElementById("confirmPassword");
 
+    function checkPassword(){
+        if (confirmPassword == password) {
+            // password is valid
+            console.log("password is valid");
+        }else{
+            console.log("password is invalid");
+        }
+    }
     const data = {
         username: username,
         password: password,
         email: email,
-        confirmPassword: confirmPassword
-    };
-
+    }
     const options = {
-        method :'POST',
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }
-    fetch('/regitstration',options);
+    };
+
+    // request username and password check and
+    // request create account
+    const response = await fetch('/regitstration', options);
+    const json = await response.json();
+    console.log(json);
 });

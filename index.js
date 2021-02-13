@@ -76,26 +76,23 @@ app.post('/regitstration', (request, response) => {
             // return status
             obj = {status : "username/email already exists"};
         }
-        response.json(obj);
-        console.log(obj);
     }
-    
+
     db.find({}, (err, data) => {
+        // error has occur
         if (err) {
             response.end();
-            console.log("nani");
             res = 0;
         }
+        // data is undefined
         if(data == undefined) {
-            console.log("undefined");
             res = 1;
-        };
+        }
         if (Object.keys(data).length == 0){ 
-            console.log("len=0");
             res = 1;
         }
         for (user of data) {
-            console.log(user.user.username,user.user.password,user.user.email);
+            console.log("nani",user.user.username,user.user.password,user.user.email);
             if (user.user.username === username || user.user.email === email){
                 // user already exists
                 res = 0;
@@ -103,6 +100,6 @@ app.post('/regitstration', (request, response) => {
         }
         // I'm not sure if you need to pass in res here.
         register();
-        console.log("why");
+        response.json(obj);
     })
 });
