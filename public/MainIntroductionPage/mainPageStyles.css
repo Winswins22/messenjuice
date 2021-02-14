@@ -8,6 +8,15 @@ html {
         background-size: 100%;
 }
 
+.siteName{
+    position: absolute;
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
+    left: 15%;
+}
+
 li, a, button{
     font-family:"Montserrat",sans-serif;
     font-weight: 500;
@@ -24,7 +33,6 @@ header {
 }
 
 .logo{
-    cursor:pointer;
     width:5%;
     margin-right: auto;
 }
