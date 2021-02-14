@@ -1,0 +1,215 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* background-color:pink; */
+
+    background-color: rgb(26, 26, 26);
+    background-size: 100%;
+}
+
+li, a, button{
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500;
+    font-size:16px;
+    color:white;
+    text-decoration: none;
+}
+
+header {
+    top: 0;
+    background-color: rgb(26, 26, 26);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 10px;
+    height: 6%;
+    width: 98%;
+    border-bottom: 1px solid #fff;
+    position: fixed;
+}
+
+.blankSpaceForHeader{
+    height: 12%;
+}
+
+.logo{
+    display: block;
+    margin-right: auto;
+    cursor:pointer;
+    width: 5%;
+
+}
+
+.siteName{
+    cursor: pointer;
+    position: absolute;
+    font-family:"Montserrat",sans-serif;
+    font-weight: 500;
+    font-size:30px;
+    color: #fff;
+    left: 6%;
+}
+
+.navLink {
+    list-style: none;
+}
+
+.navLink li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.navLink li a{
+    transition: all 0.3s ease 0s;
+}
+
+.navLink li a:hover{
+    color:#0088a9;
+    cursor: pointer;
+}
+
+.feedList{
+    position: fixed;
+    left: 0%;
+    height: 80%;
+    width: 15%;
+    border-radius: 10px;
+    margin: 20px 0;
+
+}
+
+.picture{
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    margin: 8px 10px 8px 15px;
+}
+
+.feedElement{
+    width: 93%;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.feedElement:hover{
+    transition: all 0.2s ease 0s;
+    background-color: rgb(40, 40, 40);
+}
+
+.feedElementText{
+    color: #fff;
+    font-family:"Montserrat",sans-serif;
+    font-size: 20px;
+    padding: 10px 0;
+
+    word-wrap: hidden;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.feed{
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(41, 41, 68);
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.createPost{
+    background-color: rgba(15, 15, 15, 0.333);
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.createPostIcon{
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 50px;
+    margin: 8px;
+}
+
+.createPostText{
+    color: rgb(100, 100, 100);
+    font-family:"Montserrat",sans-serif;
+    font-size: 20px;
+    display: inline-block;
+    margin: 23px 0;
+}
+
+.createPost:hover{
+    transition: all 0.2s ease 0s;
+    background-color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+.event{
+    margin: 20px 0;
+    background-color: rgba(15, 15, 15, 0.333);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.picNameTime{
+    border-radius: 10px;
+    padding: 15px;
+    background-color: rgb(41, 41, 68);
+    width: 25%;
+}
+
+.profilePicture{
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    width: 60px;
+}
+
+.nameTime{
+    padding: 5px;
+    word-wrap: hidden;
+    display: inline-block;
+}
+
+.posterName{
+    font-family:"Montserrat",sans-serif;
+    color: rgb(74, 100, 247);
+    font-size: 25px;
+}
+.postedTime{
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+}
+
+.postTitle{
+    text-align: center;
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+    font-size: 30px;
+    padding: 10px 0;
+}
+
+.postContent{
+    font-family:"Montserrat",sans-serif;
+    color: #fff;
+    padding: 5px 0;
+}
+
+.postPicture{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.donation{
+    margin: 20px 0;
+    background-color: rgb(25, 31, 24);
+    padding: 20px;
+    border-radius: 10px;
+}
