@@ -29,7 +29,7 @@ app.use(express.json({ limit: '100mb' }));
 // route to home page
 app.get('/', function (req, res) {
     // res.sendFile(__dirname + "/" + "public/MainPageTemp/mainPage.html");
-    fs.createReadStream("public/MainPageTemp/mainPage.html").pipe(res);
+    fs.createReadStream("public/MainIntroductionPage/mainIntro.html").pipe(res);
 })
 
 /*
