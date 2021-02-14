@@ -1,14 +1,10 @@
-// Not hooked up yet
-
-/*
+// const send_button = document.getElementById("Send");
 const url_button = document.getElementById("URL_Shortener");
-const input_box = document.getElementById("input");
-
-const output_title = document.getElementById("output_title");
-const output_box = document.getElementById("output");
-*/
+// const text_box = document.getElementById("Send");
 
 url_button.addEventListener("click", function(){
+
+    //console.log("Trying to shorten link: ", message_box.value);
 
     const settings = {
         "async": true,
@@ -21,17 +17,16 @@ url_button.addEventListener("click", function(){
             "x-rapidapi-host": "url-shortener-service.p.rapidapi.com"
         },
         "data": {
-            "url": input_box.value
+            "url": message_box.value
         }
     };
     
     $.ajax(settings).done(function (response) {
 
-        console.log("Clicked!");
-        console.log(response);
+        //console.log("Clicked!");
+        //console.log(response);
 
-        output_title.innerHTML = "Shortened URL";
-        output_box.innerHTML = response.result_url;
+        message_box.value = response.result_url;
 
     });
 
