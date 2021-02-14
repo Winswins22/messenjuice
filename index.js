@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 // const PORT = 3000;
 app.listen(PORT, () => console.log('listening at port:', PORT));
 
-app.use(express.static('public'));
+app.use(express.static('/public'));
 app.use(express.json({ limit: '100mb' }));
 
 // route to home page
