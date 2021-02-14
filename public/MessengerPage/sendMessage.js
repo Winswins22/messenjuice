@@ -14,6 +14,9 @@ let tempMessage;
 let timeDiv;
 let messageDiv;
 
+let username1 = "sampleFriend1" // sample
+let username2 = "sampleFriend2" // sample
+
 /////////////////////////////////////////////////////
 /*
    Functions for retrieving info
@@ -124,7 +127,10 @@ function sendWithClick(){
 
         // Log + Send the time
         // console.log("Current Time:", getTime());
-        
+
+        // save Messages
+        saveData(saveData);
+
         // Reset the textbox's value
         message_box.value = "";
 
@@ -151,6 +157,9 @@ function sendWithEnter(character){
             // Log + Send the time
             // console.log("Current Time:", getTime());
             
+            // save Messages
+            saveData(saveData);
+
             // Reset the textbox's value
             message_box.value = "";
 
@@ -197,3 +206,45 @@ message_box.addEventListener("keydown", function(character){
     }
 
 });
+
+/////////////////////////////////////////////////////
+/*
+   saving messages
+*/
+/////////////////////////////////////////////////////
+
+async function saveData(message_box){
+    // save data
+
+    let message = {
+        chat:[username1,username2],
+        roomID: username1,  // USING SAMPLE ID
+        _message : {
+            txt: message_box.value,
+            author: username1, // USING SAMPLE USERNAME
+            time:getTime(),
+        }
+    }
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(message)
+    };
+
+    console.log(message);
+    // save data and get status
+    console.log("saving...");
+    const response = await fetch('/saveMessages');
+    const json = await response.json();
+
+    // log status
+    if (json.status === 'success'){
+        console.log("messages saved successful");
+
+    }else{
+        console.log("messages saved failed");
+    }
+}
