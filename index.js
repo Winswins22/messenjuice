@@ -19,8 +19,8 @@ chatrooms.loadDatabase();
 
 // load app
 const app = express();
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+// const PORT = 3000;
 app.listen(PORT, () => console.log('listening at port:', PORT));
 
 app.use(express.static('public'));
@@ -276,7 +276,6 @@ app.post('/loadMessages',(req,res)=>{
         const messages = data[0].messages;
 
         status = {status: "success", messages:messages};
-        console.log(status);
         res.json(status);
     })
 })
