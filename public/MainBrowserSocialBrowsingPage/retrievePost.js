@@ -19,7 +19,7 @@ let textboxDiv = document.createElement("div");
 let titleData = myStorage.getItem('title');
 let textboxData = myStorage.getItem('textbox');
 
-// let timeElement = document.getElementById("postedTimeUnique");
+let timeElement = document.getElementById("postedTimeUnique");
 
 /////////////////////////////////////////////////////
 /*
@@ -111,7 +111,7 @@ function createPost(){
     post_area.appendChild(textboxDiv);
 
     // Change current time
-    // timeElement.innerHTML = getTime();
+    timeElement.innerHTML = getTime();
 
 }
 
@@ -120,6 +120,8 @@ function createPost(){
    Run the code
 */
 /////////////////////////////////////////////////////
+
+timeElement.innerHTML = getTime();
 
 if (isData()){
     readData();
