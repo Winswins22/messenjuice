@@ -269,7 +269,7 @@ async function loadMessages(){
         body: JSON.stringify(data)
     };
 
-    const response = await fetch('/loadMessages',options);
+    const response = await fetch('/loadMessages', options);
     const json = await response.json();
 
     console.log(json);

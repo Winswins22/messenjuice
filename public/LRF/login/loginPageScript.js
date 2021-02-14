@@ -38,6 +38,8 @@ document.getElementById("button").addEventListener('click', async event=>{
             if ((username_email === user.username || username_email === user.email) && password === user.password){
                 // login success
                 console.log("login success");
+
+                window.location.href = "../../MainBrowserSocialBrowsingPage/mainPage.html";
                 return;
             }
         }

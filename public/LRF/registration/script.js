@@ -27,6 +27,7 @@ document.getElementById("button").addEventListener('click', async event=>{
         const response = await fetch('/regitstration', options);
         const json = await response.json();
         console.log(json);
+        window.location.href = "../../MainBrowserSocialBrowsingPage/mainPage.html";
     }else{
         console.log("password is invalid");
     }

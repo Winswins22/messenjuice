@@ -1,6 +1,6 @@
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"12345","author":"sampleFriend1","time":"8:57AM"}],"_id":"g8auXDXtIS5PrqG7"}
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"12345","author":"sampleFriend1","time":"8:57AM"},{"txt":"4321","author":"sampleFriend1","time":"8:57AM"}],"_id":"g8auXDXtIS5PrqG7"}
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"}],"_id":"ORrkhAIpCtZ2unBq"}
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"ORrkhAIpCtZ2unBq"}
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"ORrkhAIpCtZ2unBq"}
-{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"88cBjCXOGBso6b7j"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"9:17AM"}],"_id":"7MGNRwWccIbSY9Xn"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"1234","author":"sampleFriend1","time":"9:17AM"}],"_id":"3wx9YABpdXZRFzTT"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"1321412","author":"sampleFriend1","time":"9:17AM"}],"_id":"CGclxQnQeko8tRMa"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"42141","author":"sampleFriend1","time":"9:17AM"}],"_id":"f3UFzO2SPvvRX9Mo"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"3","author":"sampleFriend1","time":"9:17AM"}],"_id":"HjkxGeusPuWpHK7p"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"12","author":"sampleFriend1","time":"9:17AM"}],"_id":"iyA3p1E9QlVmA4n7"}
