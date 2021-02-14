@@ -16,7 +16,7 @@ document.getElementById("button").addEventListener('click', async event=>{
 
     // request data
     async function getData(){
-        const response = await fetch('/getDataInfo');
+        const response = await fetch('/getUserInfo');
         const json = await response.json();
         return json;
     }

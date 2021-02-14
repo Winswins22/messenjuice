@@ -1,0 +1,6 @@
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"12345","author":"sampleFriend1","time":"8:57AM"}],"_id":"g8auXDXtIS5PrqG7"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"12345","author":"sampleFriend1","time":"8:57AM"},{"txt":"4321","author":"sampleFriend1","time":"8:57AM"}],"_id":"g8auXDXtIS5PrqG7"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"}],"_id":"ORrkhAIpCtZ2unBq"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"ORrkhAIpCtZ2unBq"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"4321","author":"sampleFriend1","time":"8:57AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"},{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"ORrkhAIpCtZ2unBq"}
+{"chatRoomID":"room1","chat":["sampleFriend1","sampleFriend2"],"messages":[{"txt":"1234","author":"sampleFriend1","time":"8:58AM"}],"_id":"88cBjCXOGBso6b7j"}

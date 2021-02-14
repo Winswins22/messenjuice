@@ -4,7 +4,7 @@ document.getElementById("fogotpass").addEventListener('click', async event=>{
     const email = document.getElementById("email").value;
 
     async function getData(){
-        const response = await fetch("/getDataInfo");
+        const response = await fetch("/getUserInfo");
         const json = await response.json();
         return json;
     }
