@@ -16,6 +16,7 @@ let messageDiv;
 
 let username1 = "sampleFriend1" // sample
 let username2 = "sampleFriend2" // sample
+let roomID = "room1" // sample
 
 /////////////////////////////////////////////////////
 /*
@@ -129,7 +130,7 @@ function sendWithClick(){
         // console.log("Current Time:", getTime());
 
         // save Messages
-        saveData(saveData);
+        saveData(message_box);
 
         // Reset the textbox's value
         message_box.value = "";
@@ -158,7 +159,7 @@ function sendWithEnter(character){
             // console.log("Current Time:", getTime());
             
             // save Messages
-            saveData(saveData);
+            saveData(message_box);
 
             // Reset the textbox's value
             message_box.value = "";
@@ -216,9 +217,10 @@ message_box.addEventListener("keydown", function(character){
 async function saveData(message_box){
     // save data
 
+    console.log(message_box.value);
     let message = {
         chat:[username1,username2],
-        roomID: username1,  // USING SAMPLE ID
+        roomID: roomID,  // USING SAMPLE ID
         _message : {
             txt: message_box.value,
             author: username1, // USING SAMPLE USERNAME
@@ -237,14 +239,50 @@ async function saveData(message_box){
     console.log(message);
     // save data and get status
     console.log("saving...");
-    const response = await fetch('/saveMessages');
+    const response = await fetch(`/saveMessages`,options);
     const json = await response.json();
+    console.log(json);
 
     // log status
     if (json.status === 'success'){
         console.log("messages saved successful");
-
     }else{
         console.log("messages saved failed");
     }
 }
+/////////////////////////////////////////////////////
+/*
+   loading messages
+*/
+/////////////////////////////////////////////////////
+async function loadMessages(){
+
+    const data = {
+        chatRoomID:roomID,
+    }
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch('/loadMessages',options);
+    const json = await response.json();
+
+    console.log(json);
+    for (messages of json.messages) {
+        console.log(messages);
+        // create message
+        if (messages.author === username1){
+            createSentMessage(messages.txt);
+        }
+        else if (messages.author === username2){
+            createReceivedMessage(messages.txt);
+        }
+    }
+}
+
+loadMessages();

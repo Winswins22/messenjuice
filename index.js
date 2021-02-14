@@ -18,8 +18,9 @@ users.loadDatabase();
 chatrooms.loadDatabase();
 
 // load app
-const app = express()
-const PORT = process.env.PORT || 3000;
+const app = express();
+// const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => console.log('listening at port:', PORT));
 
 app.use(express.static('public'));
@@ -69,7 +70,7 @@ app.get('/getUserInfo', (request, response) => {
     })
 })
 
-// ---------------regitstration-------------------
+// ---------------registration-------------------
 app.post('/regitstration', (request, response) => {
     const username = request.body.username;
     const password = request.body.password;
@@ -212,31 +213,71 @@ app.post("/saveMessages", (req, res) => {
     let status = {};
 
     // already exists
-    chatrooms.find({chatRoomID: messages.roomID}, (err, data) => {
-        if (err){
-            console.log(err);
-            status = {status: "failed"};
-        }
-        // found chat room
-        
+    async function update(){
         // assuming roomID is unique
-        data.update({roomID: messages.roomID},{$set : {$push : {messages:messages}}}, {}, ()=> {
+        await chatrooms.update({chatRoomID: messages.roomID},{$push : {messages:messages._message}}, {}, ()=> {
             status = {status: "success"};
             console.log("messages updated");
         })
-        // return status
-        res.json(status);
+    }
 
-    }).then(()=>{
-        // does not exist
-        chatrooms.insert({
-            chatRoomID: messages.roomID,
-            chat:messages.chat,
-            messages:messages._message
+    async function init(){
+        // check if it exists
+
+        chatrooms.find({},async (err,data) => {
+            if (err){
+                status = {status: "failed"};
+                console.log(err);
+            }
+            for (chat of data){
+                if (chat.chatRoomID === messages.roomID){
+                    // chat already exists
+                    update().then(() =>{
+                        res.json(status);
+                        return;
+                    })
+                }
+            }
+            await chatrooms.insert({
+                chatRoomID: messages.roomID,
+                chat:messages.chat,
+                messages:[messages._message]
+            })
+                
+            console.log("chatroom created");
+            status = {status: "success"};
+            res.json(status);
         })
+    }
+    init();
+})
 
-        console.log("chatroom created");
-        status = {status: "success"};
+// ---------------load messages-------------------
+
+app.post('/loadMessages',(req,res)=>{
+    
+    const chatRoomID = req.body;
+    let status = {};
+
+    // search chatrooms
+    chatrooms.find({chatRoomID: chatRoomID.chatRoomID},(err,data)=>{
+        
+        if (err){
+            console.log(err);
+            status = {status: "failed"};
+            res.json(status);
+        }
+
+        if (data.length == 0){
+            console.log("data is empty");
+            return;
+        }
+
+        const messages = data[0].messages;
+
+        status = {status: "success", messages:messages};
+        console.log(status);
         res.json(status);
     })
+
 })
